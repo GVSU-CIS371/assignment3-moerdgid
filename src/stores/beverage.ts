@@ -23,41 +23,41 @@ const temps: Ref<string[]> = ref(["Hot", "Cold"]);
 const bases: Ref<BaseBeverageType[]> = ref([
   {
     id: "b1",
-    name: "Black Tea",
-    color: "#8B4513",
+    name: "Coffee",
+    color: "#6F4E37",
   },
   {
     id: "b2",
     name: "Green Tea",
-    color: "#C8E6C9",
+    color: "#A8C686",
   },
   {
     id: "b3",
-    name: "Coffee",
-    color: "#6F4E37",
+    name: "Black Tea",
+    color: "#8B4513",
   },
 ]);
 
 const creamers: Ref<CreamerType[]> = ref([
   {
     id: "c1",
-    name: "No Cream",
+    name: "No Creamer",
     color: "transparent",
   },
   {
     id: "c2",
     name: "Milk",
-    color: "AliceBlue",
+    color: "#ffffff",
   },
   {
     id: "c3",
     name: "Cream",
-    color: "#F5F5DC",
+    color: "#ffd27f",
   },
   {
     id: "c4",
     name: "Half & Half",
-    color: "#FFFACD",
+    color: "#fff2a8",
   },
 ]);
 
@@ -65,12 +65,12 @@ const syrups: Ref<SyrupType[]> = ref([
   {
     id: "s1",
     name: "No Syrup",
-    color: "#c6c6c6",
+    color: "transparent",
   },
   {
     id: "s2",
     name: "Vanilla",
-    color: "#FFEFD5",
+    color: "#FFE4B5",
   },
   {
     id: "s3",
@@ -80,12 +80,23 @@ const syrups: Ref<SyrupType[]> = ref([
   {
     id: "s4",
     name: "Hazelnut",
-    color: "#6B4423",
+    color: "#8B5A2B",
   },
 ]);
 
 const currentTemp = ref(temps.value[1]);
+const currentBase = ref<BaseBeverageType>(bases.value[0]);
+const currentCreamer = ref<CreamerType>(creamers.value[0]);
+const currentSyrup = ref<SyrupType>(syrups.value[0]);
 
 export type { BaseBeverageType, CreamerType, SyrupType };
-export { temps, bases, creamers, syrups };
-export { currentTemp };
+export {
+  temps,
+  bases,
+  creamers,
+  syrups,
+  currentTemp,
+  currentBase,
+  currentCreamer,
+  currentSyrup,
+};

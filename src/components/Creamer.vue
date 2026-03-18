@@ -1,10 +1,27 @@
 <template>
-  <div class="froth">
-    <div v-for=" in 5" class="foam"></div>
+  <div
+    class="froth"
+    :class="{ noSyrup: !hasSyrup }"
+    :style="{ backgroundColor: creamer.color }"
+  >
+    <div
+      v-for="n in 5"
+      :key="n"
+      class="foam"
+      :style="{ backgroundColor: creamer.color }"
+    ></div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { CreamerType } from "../stores/beverage";
+
+defineProps<{
+  creamer: CreamerType;
+  hasSyrup: boolean;
+}>();
+</script>
+
 <style lang="scss" scoped>
 .froth {
   overflow: visible;
@@ -12,16 +29,22 @@
   position: relative;
   height: 20%;
   width: 100%;
-  background-color: #c6c6c6;
   animation: pour-tea 2s 2s forwards;
+  border-top: 2px solid rgba(0, 0, 0, 0.08);
 }
+
+.noSyrup {
+  margin-bottom: 0;
+}
+
 .foam {
   display: block;
-  background: #e4e0d2;
   border-radius: 30px;
   height: 40px;
   width: 40px;
   position: absolute;
+  opacity: 0.95;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .foam:nth-child(1) {
